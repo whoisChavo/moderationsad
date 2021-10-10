@@ -2,7 +2,7 @@ module.exports = {
    "token":"ODkxNjE1MTM3MTg4OTUwMDE2.YVA7Tg.dHFwCyvig8Xw6TuKHJ0q02KkI8s",
     bot: {
         botOwner: ["839665290882449428"],
-        botPrefix: "!",
+        botPrefix: ".",
         botStatus: "Châvø ❤️ Maee",
         botVoice: "896493419453612171",
         mongoURL: "mongodb://nurumm:nurumm@cluster0-shard-00-00.is0vl.mongodb.net:27017,cluster0-shard-00-01.is0vl.mongodb.net:27017,cluster0-shard-00-02.is0vl.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-2jbqci-shard-0&authSource=admin&retryWrites=true&w=majority",
