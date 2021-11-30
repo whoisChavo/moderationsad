@@ -5,7 +5,7 @@ module.exports = {
         botPrefix: ".",
         botStatus: "Châvø ❤️ Maee",
         botVoice: "896493419453612171",
-        mongoURL: "mongodb://nurumm:nurumm@cluster0-shard-00-00.is0vl.mongodb.net:27017,cluster0-shard-00-01.is0vl.mongodb.net:27017,cluster0-shard-00-02.is0vl.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-2jbqci-shard-0&authSource=admin&retryWrites=true&w=majority",
+        mongoURL: "mongodb://nurum:nurum@cluster0-shard-00-00.mbutd.mongodb.net:27017,cluster0-shard-00-01.mbutd.mongodb.net:27017,cluster0-shard-00-02.mbutd.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-rkqeer-shard-0&authSource=admin&retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}",
     },
 
     roles: {
