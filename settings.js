@@ -1,5 +1,5 @@
 module.exports = {
-   "token":"ODkxNjE1MTM3MTg4OTUwMDE2.YVA7Tg.dHFwCyvig8Xw6TuKHJ0q02KkI8s",
+   "token":"ODkxNjE1MTM3MTg4OTUwMDE2.YVA7Tg.JAh9v5IZTlXZxvXUwsojQ5uVnn4",
     bot: {
         botOwner: ["839665290882449428"],
         botPrefix: ".",
@@ -43,8 +43,8 @@ module.exports = {
 
     guild: {
         guildID: "896493419361353748",
-        tagges: ["♆"], // buraya taglarınızı giriyorsunuz etiket için: #0001 olarak
-        nameTag: "♆", // buraya tagı varsa ismin başına gelcek tag
+        tagges: ["⟡"], // buraya taglarınızı giriyorsunuz etiket için: #0001 olarak
+        nameTag: "⟡", // buraya tagı varsa ismin başına gelcek tag
         defaultTag: "", // burda tagı yoksa ismin başına gelcek tag
         banLimit: 7
 
