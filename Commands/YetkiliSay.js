@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const { Database, Logger } = require("../helpers/functions");
 const ayar = require('../settings.js')
 module.exports.run = async(client, message, args, embed) => {
-    if (!message.member.hasPermission(8)) return message.channel.send(embed.setDescription(`${message.author}, Bu komutu kullanmak için yeterli yetkiye sahip değilsin!`)).sil(7);
+    if (!message.member.roles.cache.has(ayar.roles.kurucu)) return message.channel.send(embed.setDescription(`${message.author}, Bu komutu kullanmak için <@&${ayar.roles.kurucu}> yetkisine sahip olmalısın!`)).sil(7);
     let cmd = args[0];
     let role = message.guild.roles.cache.get(ayar.roles.enAltYt)
     let rol = message.guild.members.cache.filter(s => s.roles.highest.position >= role.position)
