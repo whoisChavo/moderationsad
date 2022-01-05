@@ -7,7 +7,7 @@ const moment = require('moment')
 require('moment-duration-format')
 moment.locale('tr');
 module.exports.run = async(client, message, args, embed) => {
-    if (ayar.roles.muteStaff.some(s => !message.member.roles.cache.has(s)) && !message.member.hasPermission(8)) return message.channel.send(embed.setDescription(`${message.author}, Bu komutu kullanmak için yeterli yetkiye sahip değilsin!`)).sil(7);
+    if (!message.member.roles.cache.has(ayar.roles.chatmode) && (!message.member.roles.cache.has(ayar.roles.moderatör)) && (!message.member.roles.cache.has(ayar.roles.yl)) && (!message.member.roles.cache.has(ayar.roles.lider))  && (!message.member.roles.cache.has(ayar.roles.kaptan)) && (!message.member.roles.cache.has(ayar.roles.lord)) && (!message.member.roles.cache.has(ayar.roles.monarch)) && (!message.member.roles.cache.has(ayar.roles.kurucu)) && !message.member.hasPermission(8)) return message.channel.send(embed.setDescription(`${message.author}, Bu komutu kullanmak için yeterli yetkiye sahip değilsin!`)).sil(7);
     let member = message.guild.member(message.mentions.members.first() || message.guild.members.cache.get(args[0]));
     if (!member) return message.channel.send(embed.setDescription(`${message.member}, Hatalı kullanım. Örnek: **${ayar.bot.botPrefix}unmute @Cross/ID**`)).sil(7)
 
@@ -20,8 +20,8 @@ module.exports.run = async(client, message, args, embed) => {
     if (member.id == message.author.id) return message.react(ayar.emojis.no)
     if (member.id == client.user.id) return message.react(ayar.emojis.no);
     if (member.user.bot) return message.react(ayar.emojis.no);
-    if (member.permissions.has(8)) return message.channel.send(embed.setDescription(`${message.member}, Yönetici bir kullanıcıya karışamam.`)).sil(7)
     if (member.roles.highest.position >= message.member.roles.highest.position) return message.channel.send(embed.setDescription(`${message.member}, Bu kullanıcı sizden üst/aynı pozisyonda.`)).sil(7)
+    member.voice.setMute(false)
 
     durumData.forEach(async(d, index) => {
         if (d.Durum == true) {
@@ -39,7 +39,7 @@ module.exports.run = async(client, message, args, embed) => {
 };
 exports.config = {
     name: "unmute",
-    usage: `${ayar.bot.botPrefix}unmute [@Chavo/ID]`,
+    usage: `${ayar.bot.botPrefix}unmute [@Kullanıcı/ID]`,
     guildOnly: true,
     aliases: ["unchatmute", "uncmute"],
     cooldown: 3000
