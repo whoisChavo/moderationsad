@@ -1,7 +1,7 @@
 module.exports = {
     bot: {
         botOwner: ["839665290882449428"],
-        botToken: "ODkxNjE1MTM3MTg4OTUwMDE2.YVA7Tg._oyMqIcCyJuzHTM1cpVjsYDuRhw",
+        botToken: "ODkxNjE1MTM3MTg4OTUwMDE2.YVA7Tg.eGw99WQsX3XemwW2bhDpwsg4LVw",
         botPrefix: "!",
         botStatus: "Chavo ❤️ Burjuva",
         botVoice: "896493419453612171",
