@@ -24,7 +24,7 @@ fs.readdir('./Commands/', (err, files) => {
     });
 })
 
-client.login(ayar.token)
+client.login(ayar.bot.botToken)
 
 let limit = require('./models/limit.js');
 setInterval(async() => {
@@ -35,37 +35,47 @@ setInterval(async() => {
     }
 }, 500)
 
+client.on('message', message =>{
+  const sa = message.content.toLowerCase()
+  
+  if(sa === 'sa' || sa === 'sea' || sa === 'selam aleyküm' || sa === 'Selam Aleyküm') {
+  message.channel.send(`Aleyküm Selam Hoş Geldin <@${message.author.id}>`)
+  }
+  })
 
-client.on('userUpdate', async(old, nev) => {
-    let guild = await (client.guilds.cache.get(ayar.guild.guildID))
-    let uye = guild.members.cache.get(old.id)
-
-    let embed = new Discord.MessageEmbed().setColor('RANDOM').setFooter('Chavo was here.').setTimestamp()
-    let tagrol = guild.roles.cache.get(ayar.roles.tagRole);
-    let log = guild.channels.cache.get(ayar.channels.tagLog)
-        if (old.username != nev.username || old.tag != nev.tag || old.discriminator != nev.discriminator) {
-
-    if (ayar.guild.tagges.some(tag => nev.tag.toLowerCase().includes(tag))) {
-        if (!uye.roles.cache.has(tagrol.id)) {
-            uye.roles.add(tagrol.id).catch(e => {});
-            uye.setNickname(uye.displayName.replace(ayar.guild.defaultTag, ayar.guild.nameTag)).catch(e => {});
-            if (log) log.send(embed.setDescription(`${uye}, Adlı kullanıcı tagımızı alarak ailemize katıldı!`))
-        } else {
-            uye.setNickname(uye.displayName.replace(ayar.guild.defaultTag, ayar.guild.nameTag)).catch(e => {});
-        }
-
-    } else {
-        if (!uye.roles.cache.has(tagrol.id)) {
-            uye.setNickname(uye.displayName.replace(ayar.guild.nameTag, ayar.guild.defaultTag)).catch(e => {});
-        } else {
-            uye.roles.remove(uye.roles.cache.filter(s => s.position >= tagrol.position)).catch(e => {});
-            uye.setNickname(uye.displayName.replace(ayar.guild.nameTag, ayar.guild.defaultTag)).catch(e => {});
-            if (log) log.send(embed.setDescription(`${uye}, Adlı kullanıcı tagımızı bırakarak ailemizden ayrıldı!`))
-
-        }
-    }
+client.on('userUpdate', async (oldUser, newUser) => {
+    if(oldUser.username == newUser.username || oldUser.bot || newUser.bot) return;
+    let Guild = client.guilds.cache.get("847847001348898827")
+    let Üye = Guild.members.cache.get(oldUser.id);
+    if(["⟡", "brj"].some(p => Üye.user.username.includes(p)) && !Üye.roles.cache.has("896493419415887939") && !Üye.roles.cache.has("928260948882501684")){
+      
+      if(Üye.roles.cache.has("896493419415887936")){
+      Üye.roles.add("896493419415887939").catch();
+      client.channels.cache.get("906845906614255626").send(new Discord.MessageEmbed().setColor("GREEN").setDescription(`${oldUser} adlı kullanıcı tagımızı aldığı için <@&896493419415887939> rolünü verdim.`))
       }
-})
+      if(Üye.roles.cache.has("896493419415887937")){
+        Üye.roles.add("928260948882501684").catch();
+        client.channels.cache.get("906845906614255626").send(new Discord.MessageEmbed().setColor("GREEN").setDescription(`${oldUser} adlı kullanıcı tagımızı aldığı için <@&928260948882501684> rolünü verdim.`))
+    }
+  }});
+  
+  client.on('userUpdate', async (oldUser, newUser) => {
+    if(oldUser.username == newUser.username || oldUser.bot || newUser.bot) return;
+    let Guild = client.guilds.cache.get("847847001348898827")
+    let Üye = Guild.members.cache.get(oldUser.id);
+  
+  
+    if(!["⟡", "brj"].some(p => Üye.user.username.includes(p))&& Üye.roles.cache.has("896493419415887939") && !Üye.roles.cache.has("928260948882501684")){
+      if(Üye.roles.cache.has("896493419415887936")){
+      Üye.roles.remove("896493419415887939").catch();
+     client.channels.cache.get("906845906614255626").send(new Discord.MessageEmbed().setColor("RED").setDescription(`${oldUser} adlı kullanıcı tagımızı çıkardığı için <@&896493419415887939> rolünü aldım.`))
+    }
+      if(Üye.roles.cache.has("896493419415887937")){
+      Üye.roles.remove("906845906614255626").send(new Discord.MessageEmbed().setColor("RED").setDescription(`${oldUser} adlı kullanıcı tagımızı çıkardığı için <@&928260948882501684> rolünü aldım.`))
+    }
+  
+    }});
+  
 const tagData = require('./models/yasaklıtag.js');
 client.on('userUpdate', async(old, nev) => {
     let guild = await (client.guilds.cache.get(ayar.guild.guildID))
