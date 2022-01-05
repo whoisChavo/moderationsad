@@ -4,7 +4,7 @@ module.exports = async(oldState, newState) => {
     let member = oldState.guild.members.cache.get(oldState.id);
     if (!member) return;
     let log = oldState.guild.channels.cache.get(ayar.channels.voiceLog);
-    let embed = new Discord.MessageEmbed().setColor('RANDOM').setTimestamp().setAuthor(member.user.tag, member.user.avatarURL({ dynamic: true }));
+    let embed = new Discord.MessageEmbed().setColor('WHITE').setTimestamp().setAuthor(member.user.tag, member.user.avatarURL({ dynamic: true }));
     if (member.user.bot) return;
     if (!oldState.channel && newState.channel) return log.send(embed.setDescription(`${member} - (\`${member.id}\`) Adlı kullanıcı ${newState.channel} adlı kanala giriş yaptı!`));
 
