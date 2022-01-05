@@ -3,7 +3,7 @@ const ayar = require('../settings.js');
 const { Kontrol } = require('../helpers/functions.js')
 const rolData = require('../models/rollog.js')
 module.exports = async(old, nev) => {
-    let embed = new Discord.MessageEmbed().setColor('RANDOM').setTimestamp();
+    let embed = new Discord.MessageEmbed().setColor('WHITE').setTimestamp();
     let entry = await nev.guild.fetchAuditLogs({ type: 'GUILD_MEMBER_UPDATE' }).then(audit => audit.entries.first());
     let log = nev.guild.channels.cache.get(ayar.channels.rolLog);
     if (entry.executor.bot) return;
